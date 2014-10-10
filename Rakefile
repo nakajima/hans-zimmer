@@ -1,6 +1,10 @@
 desc "Compile them into dist"
 task :compile => :samples do
   sh "coffee -p src/samples.coffee src/zimmer.coffee > dist/zimmer.js"
+  
+  if system('which minify')
+    sh "minify dist/zimmer.js"
+  end
 end
 
 desc "Create the samples.coffee from what's in the samples directory"
