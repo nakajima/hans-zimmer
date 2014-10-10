@@ -1,7 +1,7 @@
 desc "Compile them into dist"
 task :compile => :samples do
   sh "coffee -p src/zimmer.coffee > dist/zimmer.js"
-  
+
   if system('which minify')
     sh "minify dist/zimmer.js"
   end
@@ -16,7 +16,7 @@ task :samples do
     name, ext = file.split('.')
     output += "; window.fx.samples[#{name.inspect}] = 'data:audio/#{ext};base64,#{`base64 #{sample}`.chomp}';"
   end
-  
+
   File.open('./dist/samples.js', 'w+') do |file|
     file.puts output
   end
