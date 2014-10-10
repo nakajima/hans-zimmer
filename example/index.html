@@ -2,6 +2,32 @@
   <head>
     <title>Z I M M E R</title>
     <script src="https://code.jquery.com/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+    * {
+      font-family: Arial;
+    }
+    
+    a {
+      color: #0af;
+    }
+    
+    a:active {
+      text-decoration: none;
+    }
+    
+    button {
+      border: 1px solid #ddd;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      background: #0af;
+      color: #fff;
+    }
+    
+    button:active {
+      background: #09e;
+    }
+    </style>
   </head>
   <body>
     <a href="#" class="fx-lite">This is a lite one</a>
@@ -9,20 +35,22 @@
     <script>
     $(function() {
       var fx = {
-        load: function(sound) {
+        preload: function(sound) {
           var audio = document.createElement('audio');
           audio.src = "./../samples/" + sound;
           fx[sound] = audio;
         },
         
         play: function(sound) {
-          fx[sound].play()
+          var audio = document.createElement('audio');
+          audio.src = "./../samples/" + sound;
+          audio.play()
         }
       }
       
-      fx.load("808-hat.mp3")
-      fx.load("808-lowkick.mp3")
-      fx.load("808-highkick.mp3")
+      fx.preload("808-hat.mp3")
+      fx.preload("808-lowkick.mp3")
+      fx.preload("808-highkick.mp3")
       
       $('.fx-heavy').on('mousedown', function() {
         fx.play("808-highkick.mp3")
@@ -32,7 +60,7 @@
         fx.play("808-lowkick.mp3")
       })
       
-      $('.fx-lite').on('click', function() {
+      $('.fx-lite').on('mousedown', function() {
         fx.play("808-hat.mp3")
       })
     });
