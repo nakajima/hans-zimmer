@@ -5,11 +5,6 @@ fx.play = (sound) ->
   audio.src = fx.samples[sound]
   audio.play()
 
-$('.fx-heavy').on 'mousedown', ->
-  fx.play('high')
-
-$('.fx-heavy').on 'mouseup', ->
-  fx.play('low')
-
-$('.fx-lite').on 'mousedown', ->
-  fx.play('lite')
+$('.fx-heavy').on 'mousedown',  -> fx.play('high')
+$('.fx-heavy').on 'mouseup',    -> fx.play('low')
+$('.fx-lite').on 'mousedown',   -> fx.play('lite')
