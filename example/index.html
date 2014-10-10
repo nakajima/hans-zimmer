@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Z I M M E R</title>
+    <script src="https://code.jquery.com/jquery.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <a href="#" class="fx-lite">This is a lite one</a>
+    <button class="fx-heavy">This is a heavy one</button>
+    <script>
+    $(function() {
+      var fx = {
+        load: function(sound) {
+          var audio = document.createElement('audio');
+          audio.src = "./../samples/" + sound;
+          fx[sound] = audio;
+        },
+        
+        play: function(sound) {
+          fx[sound].play()
+        }
+      }
+      
+      fx.load("808-hat.mp3")
+      fx.load("808-lowkick.mp3")
+      fx.load("808-highkick.mp3")
+      
+      $('.fx-heavy').on('mousedown', function() {
+        fx.play("808-highkick.mp3")
+      })
+      
+      $('.fx-heavy').on('mouseup', function() {
+        fx.play("808-lowkick.mp3")
+      })
+      
+      $('.fx-lite').on('click', function() {
+        fx.play("808-hat.mp3")
+      })
+    });
+    </script>
+  </body>
+</html>
