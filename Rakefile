@@ -9,7 +9,7 @@ end
 
 desc "Create the samples.coffee from what's in the samples directory"
 task :samples do
-  puts "compiling samples/ directory into src/samples.coffee"
+  puts "compiling samples/ directory into dist/samples.js"
   output = "window.fx = window.fx || {} ; window.fx.samples = window.fx.samples || {};"
   Dir['./samples/*'].each do |sample|
     file = File.basename(sample)
