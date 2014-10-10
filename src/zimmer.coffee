@@ -1,15 +1,15 @@
 window.fx = {} unless window.fx?
 
 fx.play = (sound) ->
-    audio = document.createElement 'audio'
-    audio.src = sound
-    audio.play()
+  audio = document.createElement 'audio'
+  audio.src = fx.samples[sound]
+  audio.play()
 
 $('.fx-heavy').on 'mousedown', ->
-  fx.play(fx.samples.high)
+  fx.play('high')
 
 $('.fx-heavy').on 'mouseup', ->
-  fx.play(fx.samples.low)
+  fx.play('low')
 
 $('.fx-lite').on 'mousedown', ->
-  fx.play(fx.samples.lite)
+  fx.play('lite')
