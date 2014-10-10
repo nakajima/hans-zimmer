@@ -21,3 +21,5 @@ task :samples do
     file.puts output
   end
 end
+
+task :default => :compile
