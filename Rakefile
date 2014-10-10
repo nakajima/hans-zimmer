@@ -1,10 +1,11 @@
 desc "Compile them into dist"
 task :compile => :samples do
-  system "coffee -p src/samples.coffee src/zimmer.coffee > dist/zimmer.js"
+  sh "coffee -p src/samples.coffee src/zimmer.coffee > dist/zimmer.js"
 end
 
 desc "Create the samples.coffee from what's in the samples directory"
 task :samples do
+  puts "compiling samples/ directory into src/samples.coffee"
   output = "window.fx = {} unless window.fx? ; window.fx.samples = {}\n"
   Dir['./samples/*'].each_with_object({}) do |sample, result|
     file = File.basename(sample)
